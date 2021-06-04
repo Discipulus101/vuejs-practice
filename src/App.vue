@@ -1,30 +1,55 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="mainContainer">
+      <h1>Todo application</h1>
+      <AddTodo
+        @add-todo="addTodo"
+      />
+      <hr>
+      <TodoList 
+        :todos="todos"
+        @remove-todo="removeTodo"
+      />
   </div>
-  <router-view />
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+  import TodoList from "@/components/TodoList.vue";
+  import AddTodo from "@/components/AddTodo.vue";
 
-#nav {
-  padding: 30px;
+  export default {
+    name: 'app',
+    data() {
+      return {
+        todos: [
+          {id:1, title: 'дело 1', completed: false},
+          {id:2, title: 'дело 2', completed: false},
+          {id:3, title: 'дело 3', completed: false},
+        ]
+      }
+    },
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+    methods: {
+      removeTodo(id) {
+        this.todos = this.todos.filter(t => t.completed === false || t.id !== id)
+      },
+      addTodo(todo) {
+        this.todos.push(todo)
+      }
+    },
 
-    &.router-link-exact-active {
-      color: #42b983;
+    components: {
+      TodoList, AddTodo
     }
   }
-}
+</script>
+
+<style lang="scss">
+  .mainContainer{
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+  }
 </style>
