@@ -1,7 +1,22 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import Home from "../views/Home.vue";
 
 const routes: Array<RouteRecordRaw> = [
-
+  {
+    path: "/",
+    name: "Home",
+    component: Home,
+  },
+  {
+    path: "/todos",
+    name: "About",
+    component: () => import("../views/Todos.vue"),
+  },
+  {
+    path: "/todo/:id",
+    name: "todoItemPage",
+    component: () => import("../views/TodoItemPage.vue"),
+  },
 ];
 
 const router = createRouter({
