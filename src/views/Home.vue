@@ -1,18 +1,23 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <div class="content">
+    <router-link to="/todos" class="todosLink">Todos</router-link>
+    <h2>home page</h2>
+    <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor earum ipsa
+      quibusdam! Ut beatae earum reprehenderit quibusdam nisi explicabo commodi
+      aut odit? Fugiat, in repellendus. Laborum quae cumque ea soluta.
+    </p>
   </div>
 </template>
 
-<script lang="ts">
-import { Options, Vue } from "vue-class-component";
-import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
+<style scoped>
+.content {
+  display: flex;
+  flex-direction: column;
+}
 
-@Options({
-  components: {
-    HelloWorld,
-  },
-})
-export default class Home extends Vue {}
-</script>
+.todosLink,
+h2 {
+  text-align: center;
+}
+</style>
